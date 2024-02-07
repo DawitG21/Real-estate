@@ -1,0 +1,19 @@
+{
+    "amenities": [{
+            "name": "WiFi",
+            "value": true
+        },
+        {
+            "name": "Gym",
+            "value": false
+        },
+        {
+            "name": "Swimming Pool",
+            "value": true
+        },
+        {
+            "name": "Garden",
+            "value": false
+        }
+    ]
+}

@@ -1,0 +1,711 @@
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+p {
+  text-align: center;
+}
+
+/* section1 styles */
+
+.section1 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-attachment: local;
+  padding-top: 3%;
+}
+
+.section1 {
+  min-height: 59%;
+  width: 100%;
+  color: white;
+  background-image: url(../../assets/ezembil4.jpg);
+}
+
+.p {
+  padding-top: 16vh;
+  text-align: center;
+}
+
+.p_2 {
+  padding-top: 10vh;
+  text-align: center;
+  display: none;
+}
+
+.p_3 {
+  text-align: center;
+}
+
+.category {
+  background-color: #fff;
+  color: #00BFFF;
+  border-radius: 15px;
+  width: 13%;
+  height: 50px;
+  cursor: pointer;
+  top: 59%;
+  padding-top: 40px;
+  transition: transform .2s;
+}
+
+
+.h2_villa_apartment_office {
+  margin-top: -5%;
+}
+
+.category:hover {
+  transform: scale(1.1);
+  background-color: #00BFFF;
+  color: #fff;
+}
+
+.category_1 {
+  margin-left: 15%;
+  position: absolute;
+}
+
+.category_2 {
+  margin-left: 42%;
+  position: absolute;
+}
+
+.category_3 {
+  margin-left: 68%;
+  position: absolute;
+}
+
+/* end section1 styles */
+
+/* main content area styles */
+
+.main-content {
+  padding-top: 30px;
+  height: 100%;
+}
+
+.main-content {
+  border-bottom: 1px solid #b8bec9;
+  padding: 22px 20px;
+  font-weight: 700;
+  color: #333;
+  font-size: 18px;
+}
+
+.section2 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.subscription {
+  flex-basis: 300px;
+  flex-grow: 3;
+  height: auto;
+  margin: 15px;
+  border-radius: 6px;
+}
+
+/* subscription(buy, sell or rent) styles */
+#control-container {
+  padding: 0px !important;
+}
+
+#spline-chartcontainer_Series_0_Point_2_Symbol {
+  -webkit-animation: opac 1s ease-out infinite;
+  animation: opac 1s ease-out infinite;
+}
+
+#spline-chartcontainer_Series_2_Point_0_Symbol {
+  -webkit-animation: opac 1s ease-out infinite;
+  animation: opac 1s ease-in-out infinite;
+}
+
+@keyframes opac {
+  0% {
+    stroke-opacity: 1;
+    stroke-width: 0px;
+  }
+
+  100% {
+    stroke-opacity: 0;
+    stroke-width: 10px;
+  }
+}
+
+.control-fluid {
+  padding: 0px !important;
+}
+
+.control-section {
+  height: auto;
+}
+
+.section3 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.tours {
+  flex-basis: 300px;
+  flex-grow: 3;
+  height: auto;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+.subscription .section2 .tours .section3 .main-content .tours_button {
+  width: 100%;
+}
+
+.tours_button {
+  flex-basis: 300px;
+  flex-grow: 3;
+  height: 5%;
+  margin: 15px;
+  border-radius: 6px;
+  background: #00BFFF;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tours_button:hover {
+  transform: scale(1.0);
+  background-color: red;
+}
+
+.p_4 {
+  padding-top: 10px;
+}
+
+.sub_desc {
+  padding: 30px 20px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+
+.sub_desc_left {
+  margin-left: 0;
+}
+
+.sub_desc_right {
+  margin-right: 0;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 1.1em;
+  color: #ffffff;
+  background: #00BFFF;
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  border-radius: 1px;
+  border-radius: 4px 4px 4px 4px;
+  transition: transform .1s;
+  border: none;
+}
+
+.btn:hover {
+  transform: scale(1.0);
+  background: #fff;
+  color: #00BFFF;
+  border: 1px solid #c9e6ff;
+}
+
+.btn1 {
+  margin-left: 37%;
+  margin-right: 30%;
+}
+
+.btn2 {
+  margin-left: 37%;
+  margin-right: 30%;
+}
+
+.btn3 {
+  margin-left: 37%;
+  margin-right: 30%;
+}
+
+.buy_home {
+  padding-left: 33%;
+  cursor: pointer;
+}
+
+.sell_home {
+  padding-left: 33%;
+  cursor: pointer;
+}
+
+.rent_home {
+  padding-left: 33%;
+  cursor: pointer;
+}
+
+.tours_desc {
+  border-radius: 0x;
+}
+
+.tours_content {
+  width: 100%;
+  height: 30vh;
+}
+
+/* end main content area */
+
+.new-container {
+  width: 81%;
+  height: 90vh;
+  float: right;
+}
+
+.company-modal {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0;
+}
+
+.close-modal {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  position: absolute;
+  left: 68%;
+  top: 13vh;
+  text-align: center;
+}
+
+.x-icon {
+  font-size: 25px;
+  color: #2A3F54;
+  cursor: pointer;
+}
+
+.application-form {
+  width: 35%;
+  min-height: 60%;
+  margin-top: 15vh;
+  margin-left: 35%;
+  background-color: whitesmoke;
+  display: none;
+}
+
+.header-div {
+  width: 100%;
+  height: 30%;
+}
+
+.my-logo {
+  width: 43%;
+  height: 100%;
+  float: left;
+}
+
+.img-app-logo {
+  margin-top: 15%;
+  margin-left: 60%;
+}
+
+.header-div-name {
+  width: 55%;
+  height: 100%;
+  float: left;
+  padding-top: 10%;
+}
+
+.new-label {
+  font-size: 1.5rem;
+  color: #2A3F54;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  text-transform: none;
+}
+
+.form-body {
+  width: 100%;
+  height: 60%;
+  margin-top: 10%;
+}
+
+.text-input {
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid rgb(214, 214, 214);
+  background: #f1f1f1;
+  margin-left: 10%;
+}
+
+input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.btn-block {
+  display: block;
+  width: 77%;
+  margin-left: 10%;
+  margin-top: 2%;
+  color: white;
+  border: none;
+  background-color: #2A3F54;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+}
+
+@media screen and (max-width: 1150px) {
+  .category {
+    width: 15%;
+  }
+
+  .subscription .section2 .tours .section3 .main-content .tours_button {
+    width: 100%;
+  }
+
+  .sub_desc_buy {
+    height: 87%;
+  }
+
+  .sub_desc_center {
+    margin-right: 0;
+    height: 87%;
+  }
+
+  .sub_desc_left {
+    margin-left: 0;
+  }
+
+  .sub_desc_right {
+    margin-left: 0;
+    margin-right: 0;
+    height: 87%;
+  }
+
+  .btn1,
+  .btn2,
+  .btn3 {
+    width: auto;
+  }
+
+  .btn3 {
+    margin-left: 42%;
+  }
+
+  .control-section {
+    width: auto;
+  }
+
+  .rent_home {
+    padding-left: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 768px) {
+
+  .h2_villa_apartment_office {
+    margin-top: 1%;
+  }
+
+  .section1 {
+    min-height: 50%;
+    background-image: url(../../assets/ezembil3.jpg);
+  }
+
+  .category {
+    width: 100%;
+    margin-left: 0;
+    top: 103%;
+    padding-top: inherit;
+    background-color: darksalmon;
+    color: #fff;
+  }
+
+  .category_1 {
+    margin: 0px;
+    height: 6%;
+    top: 54%;
+  }
+
+  .category_2 {
+    margin: 0px;
+    top: 61%;
+    height: 6%;
+  }
+
+  .category_3 {
+    margin: 0px;
+    top: 68%;
+    height: 6%;
+  }
+
+  .section2 {
+    padding-top: 128px;
+  }
+
+  .subscription {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .tours {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .tours_button {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .subscription .section2 .tours .section3 .main-content .tours_button {
+    width: 100%;
+  }
+
+  .sub_desc_left {
+    margin-left: 0;
+  }
+
+  .sub_desc_right {
+    margin-right: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .btn1,
+  .btn2,
+  .btn3 {
+    width: auto;
+  }
+
+  .btn3 {
+    margin-left: 42%;
+  }
+
+  .rent_home {
+    padding-left: 40%;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) {
+  .h2_villa_apartment_office {
+    margin-top: 1%;
+  }
+
+  .p {
+    padding-top: 18%;
+  }
+
+  .section1 {
+    min-height: 50%;
+    background-image: url(../../assets/ezembil2.jpg);
+  }
+
+  .category {
+    color: #fff;
+    width: 100%;
+    margin-left: 0;
+    top: 103%;
+    padding-top: inherit;
+    background-color: gainsboro;
+  }
+
+  .category_1 {
+    margin: 2px;
+    height: 6%;
+    top: 53%;
+  }
+
+  .category_2 {
+    margin: 2px;
+    top: 60%;
+    height: 6%;
+  }
+
+  .category_3 {
+    margin: 2px;
+    top: 67%;
+    height: 6%;
+  }
+
+  .subscription .section2 .tours .section3 .main-content .tours_button {
+    width: 100%;
+  }
+
+  .tours {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .tours_button {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .section2 {
+    padding-top: 132px;
+
+  }
+
+  .subscription {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .sub_desc_buy {
+    height: 87%;
+  }
+
+  .sub_desc_left {
+    margin-left: 0;
+  }
+
+  .sub_desc_right {
+    margin-right: 0;
+  }
+
+  .rent_home {
+    padding-left: 36%;
+  }
+
+  .btn1,
+  .btn2,
+  .btn3 {
+    width: auto;
+  }
+
+  .btn3 {
+    margin-left: 37%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section1 {
+    min-height: 50%;
+    background-image: url(../../assets/ezembil9.jpeg);
+  }
+
+  .p {
+    display: none;
+  }
+
+  .p_2 {
+    display: block;
+    padding-top: 30%;
+    color: #fff;
+  }
+
+  .category {
+    width: 100%;
+    margin-left: 0;
+    top: 59%;
+    padding-top: inherit;
+    background-color: burlywood;
+    color: #fff;
+  }
+
+  .h2_villa_apartment_office {
+    margin-top: 1%;
+  }
+
+  .category_1 {
+    margin: 1px;
+    height: 6%;
+  }
+
+  .category_2 {
+    margin: 1px;
+    top: 66%;
+    height: 6%;
+  }
+
+  .category_3 {
+    margin: 1px;
+    top: 73%;
+    height: 6%;
+  }
+
+  .section1 {
+    padding-top: 15%;
+    background-position: 0%;
+  }
+
+  .section2 {
+    padding-top: 29%;
+
+  }
+
+  .subscription {
+    margin: 6px;
+    top: 2px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .sub_desc_left {
+    margin-left: 0;
+  }
+
+  .sub_desc_right {
+    margin-right: 0;
+  }
+
+  .rent_home {
+    padding-left: 32%;
+  }
+
+  .btn2 {
+    margin-left: 37%;
+  }
+
+  .btn3 {
+    margin-left: 35%;
+  }
+
+  .btn1 {
+    margin-left: 31%;
+  }
+
+  .tours {
+    margin: 6px;
+    top: 2px;
+  }
+
+  .tours_button {
+    margin: 6px;
+    top: 2px;
+    display: none;
+  }
+
+  .p_4 {
+    padding-top: 5px;
+  }
+}

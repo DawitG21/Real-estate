@@ -1,0 +1,82 @@
+{
+  "homes": [
+    {
+      "id": 1,
+      "type": "Villa",
+      "price": 920000,
+      "address": "CMC",
+      "area": 6292,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "car_type": "Cars",
+      "park_spots": 1,
+      "amenity": "Gym",
+      "homeUrl": "../../assets/ezembil10.jpg"
+    },
+    {
+      "id": 2,
+      "type": "Apartment",
+      "price": 3000,
+      "address": "Summit",
+      "area": 921,
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "car_type": "Cars",
+      "park_spots": 2,
+      "amenity": "Wifi",
+      "homeUrl": "../../assets/ezembil6.jpg"
+    },
+    {
+      "id": 3,
+      "type": "Villa",
+      "price": 820000,
+      "address": "Hayat",
+      "area": 4921,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "car_type": "Trucks",
+      "park_spots": 3,
+      "amenity": "Garden",
+      "homeUrl": "../../assets/ezembil8.jpg"
+    },
+    {
+      "id": 4,
+      "type": "Apartment",
+      "price": 420000,
+      "address": "Sarbet",
+      "area": 3921,
+      "bedrooms": 2,
+      "bathrooms": 3,
+      "car_type": "Cars",
+      "park_spots": 4,
+      "amenity": "Swimming Pool",
+      "homeUrl": "../../assets/ezembil1.jpg"
+    },
+    {
+      "id": 5,
+      "type": "Villa",
+      "price": 629000,
+      "address": "Mekhanisa",
+      "area": 2921,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "car_type": "Vans",
+      "park_spots": 1,
+      "amenity": "Gym",
+      "homeUrl": "../../assets/ezembil6.jpg"
+    },
+    {
+      "id": 6,
+      "type": "Apartment",
+      "price": 720000,
+      "address": "Bole",
+      "area": 1921,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "car_type": "Bikes",
+      "park_spots": 1,
+      "amenity": "Gym",
+      "homeUrl": "../../assets/ezembil5.jpg"
+    }
+  ]
+}

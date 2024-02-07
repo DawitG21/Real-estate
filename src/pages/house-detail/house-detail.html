@@ -1,0 +1,315 @@
+<!-- <header-nav-selector></header-nav-selector> -->
+<app-navheader></app-navheader>
+<div class="main-container">
+    <div class="container">
+        <div class="my-slides fade" (click)="zoomImage(0)">
+            <img src="../../assets/1.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(1)">
+            <img src="../../assets/5.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(2)">
+            <img src="../../assets/7.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(3)">
+            <img src="../../assets/3.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(4)">
+            <img src="../../assets/4.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(5)">
+            <img src="../../assets/6.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(6)">
+            <img src="../../assets/9.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(7)">
+            <img src="../../assets/10.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(8)">
+            <img src="../../assets/11.jpg" class="slide-image">
+        </div>
+        <div class="my-slides fade" (click)="zoomImage(9)">
+            <img src="../../assets/13.jpg" class="slide-image">
+        </div>
+        <!-- <a class="previous" (click)="nextAndPreviousSlide(-1)">&#10094;</a>
+        <a class="next" (click)="nextAndPreviousSlide(1)">&#10095;</a> -->
+        <div class="row" id="scroll-row">
+            <a class="previous-scroll xymovers" (click)="scrollY()">&#10094;</a>
+            <a class="next-scroll xymovers" (click)="scrollX()">&#10095;</a>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/1.jpg" (click)="currentSlide(1)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/5.jpg" (click)="currentSlide(2)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/7.jpg" (click)="currentSlide(3)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/3.jpg" (click)="currentSlide(4)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/4.jpg" (click)="currentSlide(5)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/6.jpg" (click)="currentSlide(6)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/9.jpg" (click)="currentSlide(7)">
+            </div>
+
+
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/10.jpg" (click)="currentSlide(8)">
+            </div>
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/11.jpg" (click)="currentSlide(9)">
+            </div>
+            <!-- <div class="column">
+                <img class="small-images full-width" src="../../assets/12.jpg" (click)="currentSlide(7)">
+            </div> -->
+            <div class="column">
+                <img class="small-images full-width" src="../../assets/13.jpg" (click)="currentSlide(10)">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="agent-detail">
+        <div class="agent-information-div">
+            <p class="agent-detail-header">Sunshine RealEstate</p>
+            <div class="contact-phone">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/grey-phone.png">
+                </div>
+                <div class="contact-info">
+                    <p class="agent-infos">+251-945-554-890</p>
+                </div>
+            </div>
+            <div class="contact-phone">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/envelope.png">
+                </div>
+                <div class="contact-info">
+                    <p class="agent-infos">agent@ezembil.com</p>
+                </div>
+            </div>
+            <div class="contact-phone">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/post.png">
+                </div>
+                <div class="contact-info">
+                    <p class="agent-infos">20 Listings (10 sold)</p>
+                </div>
+            </div>
+            <button class="btn-block" (click)="openCloseModal()">Contact Agent</button>
+            <a class="new-anchor" (click)="swalMsg('Saved for later')">Save for later</a>
+        </div>
+    </div>
+
+    <div class="house-detail2">
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/location-grey.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">Around CMC</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/size.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">2500 sqft</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/parking.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">2 Spaces</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/bedrooms.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">3 Bed rooms</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/bathrooms.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">4 Bathrooms</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/price.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">ETB 3,500,000</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/gym.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">Gym</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/wifi.jpg">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">wifi</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/swimming-pool.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">Swimming pool</p>
+            </div>
+        </div>
+        <div class="details2">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/garden.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">Garden</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="house-detail">
+        <div class="details location">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/location-grey.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">Around CMC</p>
+            </div>
+        </div>
+        <div class="details size">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/size.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">2500 sqft</p>
+            </div>
+        </div>
+        <div class="details parking">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/parking.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">2 Spaces</p>
+            </div>
+        </div>
+        <div class="details bedrooms">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/bedrooms.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">3 Bed rooms</p>
+            </div>
+        </div>
+        <div class="details bathrooms">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/bathrooms.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">4 Bathrooms</p>
+            </div>
+        </div>
+        <div class="details prices">
+            <div class="detail-icons-div">
+                <img class="detail-icons" src="../../assets/price.png">
+            </div>
+            <div class="detail-text-div">
+                <p class="short-details">ETB 3,500,000</p>
+            </div>
+        </div>
+    </div> -->
+    <div class="brief-description">
+        <p class="brief-description-text">Description</p>
+        <p class="brief-description-text">Tremendous curb appeal on this gorgeous two-story home located around CMC. Custom garage doors for all 2 garages, and a delightful wrought iron balcony welcome you home. This remarkable residence offers 3 bedrooms, aloft with built-in desk, and
+            4 bathrooms. Foyer shows off the stunning cutom iron work on the staircase.<br><br> Terms
+        </p>
+        <ul class="brief-description-text">
+            <li>Pay over 1 year</li>
+            <li>Online paymet allowed</li>
+            <li>2% commission</li>
+        </ul>
+    </div>
+</div>
+
+<div class="contact-agent-modal">
+    <div class="triangle-left"></div>
+    <div class="close-modal" (click)="openCloseModal()">
+        <img class="contact-imgs" src="../../assets/close.png" />
+    </div>
+    <div class="contact-agent-div">
+        <div class="contact-div">
+            <div class="contact-div-header">
+                <p class="contact-header">Let's get intouch</p>
+                <p class="contact-subheader"> Visit our office or contact us through one of these options</p>
+            </div>
+            <div class="contact-phone-modal">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/phone.png">
+                </div>
+                <div class="contact-info">
+                    <p class="contact-header">+251-945-554-890</p>
+                </div>
+            </div>
+            <div class="contact-phone-modal">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/email.png">
+                </div>
+                <div class="contact-info">
+                    <p class="contact-header">info@ezembil.com</p>
+                </div>
+            </div>
+            <div class="contact-phone-modal">
+                <div class="contact-icon">
+                    <img class="contact-imgs" src="../../assets/location.png">
+                </div>
+                <div class="contact-info">
+                    <p class="contact-header">Office 601, 6th floor, Ras Dashen bldg, Airport road, Bole, Addis Ababa, Ethiopia</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <input class="border-bottom-input" placeholder="First Name" type="text" />
+            <input class="border-bottom-input" placeholder="Last Name" type="text" />
+            <input class="border-bottom-input" placeholder="Phone Number" type="text" />
+            <input class="border-bottom-input" placeholder="Email" type="text" />
+            <button class="btn-block-2" (click)="swalMsg('Sent')">Send</button>
+        </div>
+    </div>
+</div>
+
+<div id="img-zoom-modal" class="zoom-modal">
+    <span class="close" (click)="zoomImage()">&times;</span>
+    <img class="img-modal-content 0" src="../../assets/1.jpg">
+    <img class="img-modal-content 1" src="../../assets/5.jpg">
+    <img class="img-modal-content 2" src="../../assets/7.jpg">
+    <img class="img-modal-content 3" src="../../assets/3.jpg">
+    <img class="img-modal-content 4" src="../../assets/4.jpg">
+    <img class="img-modal-content 5" src="../../assets/6.jpg">
+    <img class="img-modal-content 6" src="../../assets/9.jpg">
+    <img class="img-modal-content 7" src="../../assets/10.jpg">
+    <img class="img-modal-content 8" src="../../assets/11.jpg">
+    <img class="img-modal-content 9" src="../../assets/13.jpg">
+</div>

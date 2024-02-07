@@ -1,0 +1,384 @@
+<app-navheader></app-navheader>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<h3 class="toptext">Upload Lists <button class="btn btn-success" (click)="showAddUploadsForm()"><i class="fa fa-plus"></i></button></h3>
+
+
+<table *ngIf="showTable">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Category</th>
+            <th scope="col">Address</th>
+            <th scope="col">Area(Sqft)</th>
+            <th scope="col">Price</th>
+            <th scope="col">Enquiries</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let product of productLists">
+            <tr>
+                <td data-label="Image"><img src="{{product.image}}" class="tableimage"></td>
+                <td data-label="Category">{{product.Category}}</td>
+                <td data-label="Location">{{product.Address}}</td>
+                <td data-label="Area">{{product.Area}}</td>
+                <td data-label="Price">{{product.Amount}}</td>
+                <td data-label="Enquiries">
+                    <button class="btn btn-info" (click)="attachEnquiries(product.Id);getModal()">
+                            <i class="fa fa-flag" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td data-label="Action">
+                    <button class="btn btn-primary" (click)="showEditUploadForm(product)">
+                                        <i class="fa fa-edit"></i>
+                            </button>&nbsp;
+                    <button class="btn btn-danger" (click)="onDeletingProduct(product)">
+                                        <i class="fa fa-minus"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr class="desc-td">
+                <td colspan="6" data-label="Description">{{product.Description}}</td>
+            </tr>
+            <tr class="desc-td">
+                <td colspan="6" data-label="Terms">{{product.Term}}</td>
+            </tr>
+        </ng-container>
+
+    </tbody>
+</table>
+
+<div class="container2" *ngIf="uploadForm">
+    <!-- <h2>add product details</h2> -->
+    <div class="wrapper">
+        <div class="upload-picture">
+            <p>
+                <input (click)="hideText()" type="file" id="file" (change)="fileUploads($event)" multiple accept="image/*" name="image" [(ngModel)]="addproduct.Images">
+                <label for="file" class="uploadbutton">
+                                <i class="material-icons">add_photo_alternate</i> &nbsp;
+                                        Choose a Photo
+                </label>
+            </p>
+            <h3 class="addimageText" id="myDIV">
+                Add Your Image Here <br/><i class="fas fa-upload fa-2x"></i>
+            </h3>
+
+            <div class="gallery" *ngFor="let image of images">
+                <a>
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                </a>
+                <div class="desc">
+                    <a href="javascript:void(0)" (click)="deleteImage(image)">
+                        <i class="fa fa-trash fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-details">
+            <!-- <h3>Specification</h3> -->
+            <form #frm="ngForm" (ngSubmit)="addProduct(frm)" id="f">
+                <p class="form-group">
+                    <label>Category</label>
+                    <select class="selectstyle" #category="ngModel" name="types" [(ngModel)]="addproduct.Category" required>
+                            <option value="" disabled selected>Types of the House</option>
+                                <option>Apartment</option>
+                                <option>Office Space</option>
+                                <option>Villa</option>
+                    </select>
+                    <span class="alert alert-danger" *ngIf="category.touched && !category.valid">Category Must Be Selected</span>
+                </p>
+                <p class="form-group">
+                    <label>Location</label>
+                    <input minlength="3" type="text" #location="ngModel" name="location" [(ngModel)]="addproduct.Address" required>
+                    <span class="alert alert-danger" *ngIf="location.touched && !location.valid">
+                        <span *ngIf="location.errors.required">
+                                Location Is Required
+                        </span>
+                    <span *ngIf="location.errors.minlength">
+                                Location Must Have Minimum 3 Characters
+                        </span>
+                    </span>
+                </p>
+                <p class="form-group">
+                    <label>Area(Sqft)</label>
+                    <input type="text" #area="ngModel" name="area" [(ngModel)]="addproduct.Area" #area="ngModel" required pattern="[0-9]*">
+                    <span class="alert alert-danger" *ngIf="area.touched && !area.valid">
+                        <span *ngIf="area.errors.required">
+                                Area Is Required
+                        </span>
+                    <span *ngIf="area.errors.pattern">
+                                Number Must be Field
+                        </span>
+                    </span>
+                </p>
+
+                <p class="form-group">
+                    <label>Bedrooms</label>
+                    <input type="text" #bedrooms="ngModel" name="bedrooms" [(ngModel)]="addproduct.Beds" required>
+                    <span class="alert alert-danger" *ngIf="bedrooms.touched && !bedrooms.valid">
+                            <span *ngIf="bedrooms.errors.required">
+                                    Bedrooms Is Required
+                            </span>
+                    <span *ngIf="bedrooms.errors.pattern">
+                                    Number Must be Field
+                            </span>
+                    </span>
+                </p>
+                <p class="form-group">
+                    <label>Bathrooms</label>
+                    <input type="text" #bathrooms="ngModel" name="bathrooms" [(ngModel)]="addproduct.Baths" required>
+                    <span class="alert alert-danger" *ngIf="bathrooms.touched && !bathrooms.valid">
+                            <span *ngIf="bathrooms.errors.required">
+                                    Bathrooms Is Required
+                            </span>
+                    <span *ngIf="bathrooms.errors.pattern">
+                                    Number Must be Field
+                            </span>
+                    </span>
+                </p>
+                <p class="form-group">
+                    <label>Parking Area</label>
+                    <select class="selectstyle" #parking="ngModel" name="parking" [(ngModel)]="addproduct.Parking" required>
+                                <option value="0">Types of Vehicles:</option>
+                                <option>Pickup trucks</option>
+                                <option>Vans</option>
+                                <option>Minivans </option>
+                                <option>Sport utility vehicles</option>
+                                <option>Minivans </option>
+                                <option>Special purpose vehicles</option>
+                                <option>Motorcycles </option>
+                                <option>Passenger Cars</option>
+                    </select>
+                    <span class="alert alert-danger" *ngIf="parking.touched && !category.valid">Parking Area Must Be Selected</span>
+                </p>
+                <p class="form-group">
+                    <label>Parking Spots</label>
+                    <select class="selectstyle" #spots="ngModel" name="spots" [(ngModel)]="addproduct.ParkingSpot" required>
+                                <option value="" disabled selected> Number of Parking Spots:</option>
+                                <option >1 </option>
+                                <option >2 </option>
+                                <option >3 </option>
+                                <option >4 </option>
+                                <option >5 </option>
+                    </select>
+                    <span class="alert alert-danger" *ngIf="spots.touched && !category.valid">Parking Spots Must Be Selected</span>
+                </p>
+
+                <p class="form-group">
+                    <label>Price</label>
+                    <input type="text" #price="ngModel" name="amount" [(ngModel)]="addproduct.Amount" required>
+                    <span class="alert alert-danger" *ngIf="price.touched && !price.valid">
+                            <span *ngIf="price.errors.required">
+                                    Price Is Required
+                            </span>
+                    <span *ngIf="price.errors.pattern">
+                                    Number Must be Field
+                            </span>
+                    </span>
+                </p>
+                <p *ngFor="let amenity of amenities">
+                    <label>{{amenity.Itemname}}</label>
+                    <label class="switch">
+                                <input type="checkbox" name="amenity" (change)="checkedAmenity(amenity)">
+                                <span class="slider round"></span>
+                    </label>
+                </p>
+
+                <p class="full">
+                    <label>Description</label>
+                    <textarea name="description" #description="ngModel" rows="2" [(ngModel)]="addproduct.Description" required></textarea>
+                    <span class="alert alert-danger" *ngIf="description.touched && !description.valid">
+                            <span *ngIf="description.errors.required">
+                                    Description Is Required
+                            </span>
+                    </span>
+                </p>
+
+                <p class="full">
+                    <label>Terms</label>
+                    <textarea name="terms" #terms="ngModel" rows="4" [(ngModel)]="addproduct.Term" required></textarea>
+                    <span class="alert alert-danger" *ngIf="terms.touched && !terms.valid">
+                            <span *ngIf="terms.errors.required">
+                                    Terms Is Required
+                            </span>
+                    </span>
+                </p>
+
+                <p class="full" style="width:100%">
+                    <button (click)=onCreatingNewProduct(addproduct) style="width:50%" [disabled]="frm.invalid">Save</button>
+                    <button (click)="cancelNewUpload()" style="width:50%">Cancel</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
+
+<div class="container" *ngIf="editUploadForm">
+    <!--  <h2>edit product details</h2> -->
+    <div class="wrapper">
+        <div class="upload-picture">
+            <p>
+                <input (click)="hideText()" type="file" id="file" (change)="fileUploads($event)" multiple accept="image/*">
+                <label for="file" class="uploadbutton">
+                                    <i class="material-icons">add_photo_alternate</i> &nbsp;
+                                            Choose a Photo
+                </label>
+            </p>
+            <h3 class="addimageText" id="myDIV">
+                Add Your Image Here <br/><i class="fas fa-upload fa-2x"></i>
+            </h3>
+
+            <div class="gallery" *ngFor="let image of images">
+                <a>
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(image.url)">
+                </a>
+                <div class="desc">
+                    <a href="javascript:void(0)" (click)="deleteImage(image)">
+                        <i class="fa fa-trash fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-details">
+            <h3>Specification</h3>
+            <form>
+                <p>
+                    <label>Types</label>
+                    <select class="selectstyle" name="types" [(ngModel)]="editedUpload.Category">
+                                        <option value="" disabled selected > Types of the House</option>
+                                        <option >Apartement</option>
+                                        <option >Villa</option>
+                                        <option >Rent</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="location" [(ngModel)]="editedUpload.Address">
+                </p>
+                <p>
+                    <label>Area(Sqft)</label>
+                    <input type="text" class="form-control" name="area" [(ngModel)]="editedUpload.Area">
+                </p>
+                <p>
+                    <label>Bedrooms</label>
+                    <input type="text" class="form-control" name="bedrooms" [(ngModel)]="editedUpload.Beds">
+                </p>
+                <p>
+                    <label>Bathrooms</label>
+                    <input type="text" class="form-control" name="bathrooms" [(ngModel)]="editedUpload.Baths">
+                </p>
+                <p>
+                    <label>Parking Area</label>
+                    <select class="selectstyle" name="parking" [(ngModel)]="editedUpload.Parking">
+                                    <option value="0">Types of Vehicles:</option>
+                                    <option value="1">Pickup trucks</option>
+                                    <option value="2">Vans</option>
+                                    <option value="3">Minivans </option>
+                                    <option value="4">Sport utility vehicles</option>
+                                    <option value="5">Minivans </option>
+                                    <option value="6">Special purpose vehicles</option>
+                                    <option value="7">Motorcycles </option>
+                                    <option value="8">Passenger Cars</option>
+                        </select>
+                </p>
+                <p>
+                    <label>Parking Spots</label>
+                    <select class="selectstyle" name="spots" [(ngModel)]="editedUpload.ParkingSpot">
+                                    <option value="" disabled selected> Number of Parking Spots:</option>
+                                    <option value="1">1 Parking Spots</option>
+                                    <option value="2">2 Parking Spots</option>
+                                    <option value="2">4 Parking Spots</option>
+                                    <option value="3">2 Motor Parking Spots</option>
+                                    <option value="4">4 Motor Parking Spots</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="price" [(ngModel)]="editedUpload.Amount">
+                </p>
+
+                <p>
+                    <label>GYM</label>
+                    <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                    </label>
+                </p>
+                <p>
+                    <label>WiFi</label>
+                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                            </label>
+                </p>
+                <p>
+                    <label>Surveillance Camera</label>
+                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                            </label>
+                </p>
+                <p>
+                    <label>Swiming Pool</label>
+                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                    </label>
+                </p>
+
+                <p class="full">
+                    <label>Description</label>
+                    <textarea name="description" rows="4" [(ngModel)]="editedUpload.Description"></textarea>
+                </p>
+                <p class="full">
+                    <label>Terms</label>
+                    <textarea name="terms" rows="4" [(ngModel)]="editedUpload.Term"></textarea>
+                </p>
+                <p class="full" style="width:100%">
+                    <button (click)="updateUpload(editedUpload)" style="width:50%">Save</button>
+                    <button (click)="cancelEdits()" style="width:50%">Cancel</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal2" id="modal2">
+    <div class="modal2_dialog">
+        <section class="modal2_content">
+            <header class="modal2_header">
+                <h3 style="color: #fff; font-size: 25px; text-align: center">Enquiries List</h3>
+                <a (click)="closeModal()" class="modal2_close"><i class="fa fa-close"></i> Close</a>
+            </header>
+            <div class="modal2_body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Customere Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Message</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let enquiries of enquiriesLists">
+                        <tr>
+                            <td data-label="First Name">{{enquiries.Firstname}}</td>
+                            <td data-label="Last Name">{{enquiries.Lastname}}</td>
+                            <td data-label="Customere Email">{{enquiries.Customeremail}}</td>
+                            <td data-label="Phone Number">{{enquiries.Phonenumber}}</td>
+                            <td data-label="Message">{{enquiries.Message}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

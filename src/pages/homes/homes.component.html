@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<div id="showcase">
+    <header>
+        <nav class="cf">
+            <ul class="cf">
+                <li>
+                    <a href="#">eZembil</a>
+                </li>
+                <div class="nav_menu">
+                    <li>
+                        <a routerLink="/properties">Properties</a>
+                    </li>
+                    <li class="prop">
+                        <input type="text" class="input input_button" [(ngModel)]="address" placeholder="Search by location">
+                        <button type="button" class="btn_search input_button" style="border:none;height:30px" (click)="searchByLocation()">
+              <i class="fa fa-search"></i></button>
+                    </li>
+                </div>
+            </ul>
+            <a href=" #" id="openup">MENU</a>
+        </nav>
+    </header>
+</div>
+
+<div class="container">
+    <div class="wrapper">
+        <div class="filters">
+            <form class="forms">
+
+                <p>
+                    <label>Category<i class="fa fa-home fa-fw"></i></label>
+                    <select class="selectstyle" name="category" [(ngModel)]="filterArgs.type">
+            <option value="">{{ defaultSelection }}</option>
+            <option *ngFor="let category of categories" [ngValue]="category.type">{{ category.type }}</option>
+          </select>
+                </p>
+
+                <p>
+                    <label>Location<i class="fa fa-map-marker fa-fw"></i></label>
+                    <select class="selectstyle" name="location" [(ngModel)]="filterArgs.address">
+            <option value="">{{ defaultSelection }}</option>
+            <option *ngFor="let location of locations" [ngValue]="location.address">{{ location.address }}</option>
+          </select>
+                </p>
+
+                <p>
+                    <label>Price Range&nbsp;<i class="fa fa-dollar fa-fw"></i></label> Min:&nbsp;{{ min }}
+                    <input type="range" min="1000" max="3000" name="min" [(ngModel)]="min"> Max:&nbsp;{{ max }}
+                    <input type="range" min="3001" max="999999" name="max" [(ngModel)]="max">
+                </p><br>
+
+                <p id="myDIV">
+                    <label>Beds&nbsp;<i class="fa fa-bed fa-fw"></i></label>
+                    <input type="number" min="1" max="20" class="btn" [(ngModel)]="filterArgs.bedrooms" placeholder="Search e.g 1,2,3..." name="beds">
+                </p>
+
+                <p id="myDIV1">
+                    <label>Baths<i class="fa fa-bathtub fa-fw"></i></label>
+                    <input type="number" min="1" max="6" class="btn" [(ngModel)]="filterArgs.bathrooms" placeholder="Search e.g 1,2,3..." name="baths">
+                </p>
+
+                <p>
+                    <label>Parking&nbsp;<i class="fa fa-cab fa-fw"></i></label>
+                    <select class="selectstyle" name="parking" [(ngModel)]="filterArgs.car_type">
+            <option value="">{{ defaultSelection }}</option>
+            <option *ngFor="let parking of parkings" [ngValue]="parking.car_type">{{ parking.car_type }}</option>
+          </select>
+                </p>
+
+                <p>
+                    <label>Parking Spots<i class="fa fa-cab fa-fw"></i></label>
+                    <input type="number" min="0" max="4" class="btn" [(ngModel)]="filterArgs.park_spots" placeholder="e.g 1,2,3" name="baths">
+                </p>
+
+                <p *ngFor="let amenity of amenities">
+                    <label>{{ amenity.name }}</label>
+                    <label class="switch">
+                      <input type="checkbox" id={{amenity.name}} name="amenities" (change)="amenityChange(amenity.name, $event)">                      
+                      <span class="toggle round"></span>
+                    </label>
+                </p>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<section class="main-content">
+    <div class="main">
+
+        <ng-container *ngFor="let home of homes
+      | categoryFilter: filterArgs 
+      | locationFilter: filterArgs 
+      | bathroomFilter: filterArgs
+      | bedroomFilter: filterArgs
+      | parkingFilter: filterArgs
+      | parkspotFilter: filterArgs
+      | amenitiesFilter: filterArgs  
+      | pricerangeFilter: 'price': min:max       
+      | paginate: { itemsPerPage: 6, currentPage: p } ">
+
+            <div class="homes" (click)="openDetails()">
+                <img class="homes_content" src="{{ home.homeUrl }}" /><br>
+                <div class="labels">
+                    <label><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>&nbsp;{{ home.address }}</label><br>
+                    <label><i class="fa fa-money fa-fw"
+              aria-hidden="true"></i>&nbsp;{{ home.price | currency:"USD":"symbol" : "1.0"}}</label>
+                </div>
+                <hr>
+                <button class="details"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;{{ home.type }}</button>
+                <label>&nbsp;SqFt:{{ home.area }}</label><br>
+            </div>
+
+        </ng-container>
+
+        <div>
+            <div *ngIf="( homes | categoryFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Category result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | locationFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Location result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | bathroomFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Bathroom result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | bedroomFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Bedroom result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | parkingFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Parking result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | parkspotFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Parking spot result not found!</h5>
+        </span>
+            </div>
+
+            <div *ngIf="( homes | amenitiesFilter: filterArgs ) ?.length == 0"><span>
+          <h5>Amenity result not found!</h5>
+        </span>
+            </div>
+        </div>
+
+    </div>
+    <pagination-controls (pageChange)="p= $event" style="float:right"></pagination-controls>
+</section>

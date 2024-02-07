@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<app-navheader></app-navheader>
+<section class="section1">
+  <h1>
+    <p class="p">We bring Addis best available homes to you</p>
+  </h1>
+  <h3>
+    <p class="p_2">We bring Addis best available homes to you</p>
+  </h3>
+</section>
+
+
+<a routerLink="/list">
+  <div class="category category_1">
+    <p class="h2_villa_apartment_office">Villa</p>
+  </div>
+</a>
+
+<a routerLink="/list">
+  <div class="category category_2">
+    <p class="h2_villa_apartment_office">Apartment</p>
+  </div>
+</a>
+
+<a routerLink="/list">
+  <div class="category category_3">
+    <p class="h2_villa_apartment_office">Office Space</p>
+  </div>
+</a>
+
+
+<section class="main-content">
+
+  <div class="section2">
+    <div class="subscription">
+      <div class="sub_desc sub_desc_left sub_desc_buy">
+        <h3>{{ sub_buy }}</h3>
+        <div class="buy_home" (click)="showHouses()">
+          <img src="../../assets/for-buy.png" alt="for_buy">
+        </div>
+        <div *ngFor="let package of packages">
+          <p class="p_3">{{ package.buy }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subscription">
+      <div class="sub_desc sub_desc_center">
+        <h3>{{ sub_sell }}</h3>
+        <div class="sell_home" (click)="showHouses()">
+          <img src="../../assets/for-sale.png" alt="for_sale">
+        </div>
+        <div *ngFor="let package of packages">
+          <p class="p_3">{{ package.sell }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subscription">
+      <div class="sub_desc sub_desc_right">
+        <h3>{{ sub_rent }}</h3>
+        <div class="rent_home" (click)="showHouses()">
+          <img src="../../assets/for-rent.png" alt="for_rent">
+        </div>
+        <div *ngFor="let package of packages">
+          <p class="p_3">{{ package.rent }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tours">
+    <h3>{{ tours_header }}<br></h3>
+    <h2>{{  tours_sub_header }}</h2>
+  </div>
+
+  <ng-container *ngFor="let tour of tours">
+    <div class="section3">
+      <div class="tours">
+        <div class="tours_desc">
+          <iframe [src]="tourUrl_4" frameborder="0" class="tours_content"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+
+      <div class="tours">
+        <div class="tours_desc">
+          <iframe [src]="tourUrl_5" frameborder="0" class="tours_content"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="tours">
+        <div class="tours_desc">
+          <iframe [src]="tourUrl_6" frameborder="0" class="tours_content"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <a [href]="ezembilchannel" target="_blank" rel="noopener">
+    <div class="tours_button">
+      <p class="p_4">Watch more</p>
+    </div>
+  </a>
+
+</section>
